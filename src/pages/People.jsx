@@ -6,7 +6,9 @@ import ListGroup from 'react-bootstrap/ListGroup'
 // Imports
 import SWAPI from '../services/SWAPI'
 
+
 export default function People() {
+  
   const [person, setPerson] = useState([])
   const { id } = useParams()
 
