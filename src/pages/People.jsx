@@ -27,12 +27,12 @@ export default function People() {
       <>
         <h2>{person.name}</h2>
         <ListGroup>
-          <ListGroup.Item>Gender {person.gender}</ListGroup.Item>
-          <ListGroup.Item>Height {person.height}</ListGroup.Item>
-          <ListGroup.Item>mass {person.mass}</ListGroup.Item>
-          <ListGroup.Item>Hair color{person.hair_color}</ListGroup.Item>
-          <ListGroup.Item>Skin color{person.skin_color}</ListGroup.Item>
-          <ListGroup.Item>Eye Color{person.eye_color}</ListGroup.Item>
+          <ListGroup.Item>Gender: {person.gender}</ListGroup.Item>
+          <ListGroup.Item>Height: {person.height}</ListGroup.Item>
+          <ListGroup.Item>mass: {person.mass}</ListGroup.Item>
+          <ListGroup.Item>Hair color: {person.hair_color}</ListGroup.Item>
+          <ListGroup.Item>Skin color: {person.skin_color}</ListGroup.Item>
+          <ListGroup.Item>Eye Color: {person.eye_color}</ListGroup.Item>
         </ListGroup>
       </>
       )}
