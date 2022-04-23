@@ -1,13 +1,14 @@
 // React & Bootstrap
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import ListGroup from 'react-bootstrap/ListGroup'
 
 // Imports
 import SWAPI from '../services/SWAPI'
 
-
 export default function People() {
   const [person, setPerson] = useState([])
+  const { id } = useParams()
 
   const getPersonById = async (id) => {
     const data = await SWAPI.getPerson(id)
@@ -15,8 +16,8 @@ export default function People() {
   }
 
   useEffect(() => {
-    getPersonById(20)
-  }, [])
+    getPersonById(id)
+  }, [id])
 
 
   return (
