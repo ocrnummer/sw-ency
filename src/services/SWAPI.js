@@ -20,11 +20,11 @@ const get = async (endpoint) => {
 }
 
 const getAllPeople = async () => {
-    get('/people/')
+    return get('/people/')
 }
 
 const getPerson = async (id) => {
-    get(`/people/${id}/`)
+    return get(`/people/${id}/`)
 }
 
 const getAllFilms = async () => {
