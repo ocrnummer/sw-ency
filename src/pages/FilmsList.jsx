@@ -1,11 +1,12 @@
 // React & Bootstrap
 import { useState, useEffect } from 'react'
-// import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
 
 // Imports
 import SWAPI from '../services/SWAPI'
+import GetIDFromURl from '../services/helpers/GetIDFromURL'
 
 
 export default function FilmsList() {
@@ -28,12 +29,16 @@ export default function FilmsList() {
 
       <ListGroup className="filmslist">
         {films.map(film => 
-            <ListGroup.Item key={film.id}>
+            <ListGroup.Item key={GetIDFromURl(film.url)}>
               <h3>{film.title}</h3>
-              <p>Episode: {film.episode_id}</p>
-              <p>Relase date: {film.release_date}</p>
-              <p>Characters: {film.characters.length}</p>
-              <Button>Read more</Button>
+              <p><span>Episode:</span> {film.episode_id}</p>
+              <p><span>Relase date:</span> {film.release_date}</p>
+              <p><span>Characters:</span> {film.characters.length}</p>
+              <Button 
+                as={Link} 
+                to={`/people/${GetIDFromURl(film.url)}`}
+                // size="lg"
+              >Read more</Button>
             </ListGroup.Item>
           )}
 

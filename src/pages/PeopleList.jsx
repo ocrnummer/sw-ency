@@ -1,8 +1,10 @@
 // React & Bootstrap
 import { useState, useEffect } from 'react'
-// import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
+
+import GetIDFromURl from '../services/helpers/GetIDFromURL'
 
 // Imports
 import SWAPI from '../services/SWAPI'
@@ -10,6 +12,11 @@ import SWAPI from '../services/SWAPI'
 
 export default function FilmsList() {
   const [people, setPeople] = useState([])
+
+
+//   const charId = async (id) => {
+//     return `/people/${id}`
+// }
 
   const getpeople = async () => {
     const data = await SWAPI.getAllPeople()
@@ -20,20 +27,29 @@ export default function FilmsList() {
     getpeople()
   }, [])
 
+  
+  // console.log(people.url.GetIDFromURl())
+
+
+
 
   return (
 
     <>
       <h1>Characters</h1>
 
-      <ListGroup className="filmslist">
+      <ListGroup className="peoplelist">
         {people.map(people => 
-            <ListGroup.Item key={people.id}>
+            <ListGroup.Item key={GetIDFromURl(people.url)}>
               <h3>{people.name}</h3>
-              <p>Gender: {people.gender}</p>
-              <p>Born: {people.birth_year}</p>
-              <p>In: {people.films.length} films</p>
-              <Button>Read more</Button>
+              <p><span>Gender:</span> {people.gender}</p>
+              <p><span>Born:</span> {people.birth_year}</p>
+              <p><span>In:</span> {people.films.length} films</p>
+              <Button 
+                as={Link} 
+                to={`/people/${GetIDFromURl(people.url)}`}
+                // size="lg"
+              >Read more</Button>
             </ListGroup.Item>
           )}
 
