@@ -36,7 +36,7 @@ export default function FilmsList() {
               <p><span>Characters:</span> {film.characters.length}</p>
               <Button 
                 as={Link} 
-                to={`/people/${GetIDFromURl(film.url)}`}
+                to={`/films/${GetIDFromURl(film.url)}`}
                 // size="lg"
               >Read more</Button>
             </ListGroup.Item>
