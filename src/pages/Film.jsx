@@ -14,10 +14,8 @@ export default function Film() {
   const [film, setFilm] = useState([])
   const [loading, setLoading] = useState(false)
   const { id } = useParams()
-
   const { characters} = film;
 
-  // console.log(film)
 
   const getFilmById = async (id) => {
     setLoading(true)
@@ -29,12 +27,10 @@ export default function Film() {
 
   }
 
-
   useEffect(() => {
     getFilmById(id)
   }, [id])
 
-  console.log(film)
 
   return (
     <div>
@@ -43,7 +39,6 @@ export default function Film() {
       )}
       {film && (
         <>
-          <h2>{film.title}</h2>
           <ListGroup>
 
             <ListGroup.Item>
