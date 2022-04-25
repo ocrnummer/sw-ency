@@ -15,8 +15,12 @@ axios.defaults.baseURL = 'https://swapi.dev/api'
 
 
 const get = async (endpoint) => {
-    const res = await axios.get(endpoint) 
-    return res.data
+    try {
+        const res = await axios.get(endpoint) 
+        return res.data
+    } catch (err) {
+        return err;
+    }
 }
 
 const getAllPeople = async () => {
