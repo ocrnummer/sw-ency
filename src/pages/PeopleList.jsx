@@ -1,14 +1,18 @@
 // React & Bootstrap
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import ListGroup from 'react-bootstrap/ListGroup'
-import Button from 'react-bootstrap/Button'
+// import ListGroup from 'react-bootstrap/ListGroup'
+// import Button from 'react-bootstrap/Button'
+// import Container from 'react-bootstrap/Container'
+// import Row from 'react-bootstrap/Row'
+// import Col from 'react-bootstrap/Col'
+import { Button, Container, Row, Col, Card } from 'react-bootstrap'
+
 
 import GetIDFromURl from '../services/helpers/GetIDFromURL'
 
 // Imports
 import SWAPI from '../services/SWAPI'
-
 
 export default function FilmsList() {
   const [people, setPeople] = useState([])
@@ -48,9 +52,34 @@ export default function FilmsList() {
 
       {people && (
         <>
-          <h1>Characters</h1>
+          <h2>Characters</h2>
 
-          <ListGroup className="peoplelist">
+
+          <Container fluid="md">
+            <Row xs={1} s={2} md={3}>
+            {people.map((people, index) => 
+                <Col key={index}>
+                  <Card className="filmslist m-3">
+                    <Card.Header><h3>{people.name}</h3></Card.Header>
+                    <Card.Body>
+                      <Card.Text>Gender: {people.gender}</Card.Text>
+                      <Card.Text>Born: {people.birth_year}</Card.Text>
+                      <Card.Text>In: {people.films.length}</Card.Text>
+                    </Card.Body>
+                    <Button                         
+                      as={Link} 
+                      to={`/people/${GetIDFromURl(people.url)}`}
+                    >Read more</Button>
+                  </Card>
+                </Col>
+              )}
+
+            </Row>
+          </Container>
+
+
+
+          {/* <ListGroup className="peoplelist">
             {people.map(people => 
               <ListGroup.Item key={GetIDFromURl(people.url)}>
                 <h3>{people.name}</h3>
@@ -63,7 +92,7 @@ export default function FilmsList() {
                 >Read more</Button>
               </ListGroup.Item>
             )}
-          </ListGroup>
+          </ListGroup> */}
         </>
       )}
     </>
