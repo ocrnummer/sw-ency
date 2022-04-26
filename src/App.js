@@ -19,21 +19,6 @@ import './App.css';
 
 function App() {
 
-
-  // const [film, setFilm] = useState([])
-
-  // const getFilmById = async (id) => {
-  //   const data = await SWAPI.getFilm(id)
-  //   setFilm(data)
-  // }
-
-  // useEffect(() => {
-  //   getFilmById(1)
-  // }, [])
-
-
-  
-
   return (
     <div className="App">
 
@@ -48,8 +33,6 @@ function App() {
             <Route path="/people/:id" element={<People />} />
           </Routes>
         </Container>
-
-      {/* <p>{film.director}</p> */}
 
     </div>
   );

@@ -1,7 +1,9 @@
 // React & Bootstrap
 import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import ListGroup from 'react-bootstrap/ListGroup'
+import Button from 'react-bootstrap/Button'
+
 
 // Imports
 import SWAPI from '../services/SWAPI'
@@ -9,12 +11,17 @@ import GetIDFromURl from '../services/helpers/GetIDFromURL'
 
 
 export default function People() {
-  
+  // Declarations
   const [person, setPerson] = useState([])
   const [loading, setLoading] = useState(false)
-  const { films } = person;
-  const { id } = useParams()
 
+  const { films } = person;
+
+  const { id } = useParams()
+  const navigate = useNavigate();
+
+
+  // Functions and such
   const getPersonById = async (id) => {
     setLoading(true)
 
@@ -28,13 +35,12 @@ export default function People() {
     getPersonById(id)
   }, [id])
 
-
   return (
-    <div>
-
+    <>
       {loading && (
         <p>Loading...</p>
       )}
+
       {person && (
         <>
           <ListGroup>
@@ -60,8 +66,10 @@ export default function People() {
                 )
               )}
           </ListGroup.Item>
+
+          <Button onClick={() => navigate(-1)}>Back</Button>
         </>
       )}
-    </div>
+    </>
   )
 }
