@@ -9,10 +9,10 @@ import axios from 'axios'
 */
 
 axios.defaults.baseURL = 'https://swapi.dev/api'
+
 /*
 *   Functions
 */
-
 
 const get = async (endpoint) => {
     try {
@@ -23,8 +23,8 @@ const get = async (endpoint) => {
     }
 }
 
-const getAllPeople = async () => {
-    return get('/people/')
+const getAllPeople = async (page) => {
+    return get(`/people/?page=${page}`)
 }
 
 const getPerson = async (id) => {

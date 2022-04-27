@@ -1,10 +1,8 @@
 // React & Bootstrap
-// import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 
 // Imports
-// import SWAPI from './services/SWAPI'
 import Navigation from './components/Navigation'
 import HomePage from './pages/HomePage';
 import FilmsList from './pages/FilmsList';
@@ -20,7 +18,7 @@ import './App.css';
 function App() {
 
   return (
-    <div className="App">
+    <div id="App" className="App bg-dark">
 
         <Navigation />
 

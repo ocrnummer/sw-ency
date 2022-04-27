@@ -1,11 +1,6 @@
 // React & Bootstrap
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-// import ListGroup from 'react-bootstrap/ListGroup'
-// import Button from 'react-bootstrap/Button'
-// import Container from 'react-bootstrap/Container'
-// import Row from 'react-bootstrap/Row'
-// import Col from 'react-bootstrap/Col'
 import { Button, Container, Row, Col, Card } from 'react-bootstrap'
 
 
@@ -15,34 +10,24 @@ import GetIDFromURl from '../services/helpers/GetIDFromURL'
 import SWAPI from '../services/SWAPI'
 
 export default function FilmsList() {
-  const [people, setPeople] = useState([])
+  // Declarations
+  const [people, setPeople] = useState('')
   const [loading, setLoading] = useState(false)
+  const [page, setPage] = useState(1)
 
-
-
-//   const charId = async (id) => {
-//     return `/people/${id}`
-// }
-
-  const getpeople = async () => {
+  // Functions and such
+  const getpeople = async (page = 0) => {
     setLoading(true)
 
-    const data = await SWAPI.getAllPeople()
+    const data = await SWAPI.getAllPeople(page)
 
     setPeople(data.results)
     setLoading(false)
-
   }
 
   useEffect(() => {
-    getpeople()
-  }, [])
-
-  
-  // console.log(people.url.GetIDFromURl())
-
-
-
+    getpeople(page)
+  }, [page])
 
   return (
     <>
@@ -64,7 +49,7 @@ export default function FilmsList() {
                     <Card.Body>
                       <Card.Text>Gender: {people.gender}</Card.Text>
                       <Card.Text>Born: {people.birth_year}</Card.Text>
-                      <Card.Text>In: {people.films.length}</Card.Text>
+                      <Card.Text>In: {people.films.length} films</Card.Text>
                     </Card.Body>
                     <Button                         
                       as={Link} 
@@ -73,26 +58,24 @@ export default function FilmsList() {
                   </Card>
                 </Col>
               )}
-
             </Row>
           </Container>
 
-
-
-          {/* <ListGroup className="peoplelist">
-            {people.map(people => 
-              <ListGroup.Item key={GetIDFromURl(people.url)}>
-                <h3>{people.name}</h3>
-                <p><span>Gender:</span> {people.gender}</p>
-                <p><span>Born:</span> {people.birth_year}</p>
-                <p><span>In:</span> {people.films.length} films</p>
-                <Button 
-                  as={Link} 
-                  to={`/people/${GetIDFromURl(people.url)}`}
-                >Read more</Button>
-              </ListGroup.Item>
-            )}
-          </ListGroup> */}
+          <div className="d-flex justify-content-between align-items-center">
+            <div>
+              <Button
+                onClick={() => setPage(value => value -1)}
+                variant="primary"
+                disabled={page <= 1}
+              >Previous Page</Button>
+            </div>
+            <div>{page}</div>
+            <Button
+                onClick={() => setPage(value => value +1)}
+                variant="primary"
+                disabled={page + 1 >= page.next}
+              >Next Page</Button>
+          </div>
         </>
       )}
     </>

@@ -21,6 +21,9 @@ export default function Film() {
   const { id } = useParams()
   const navigate = useNavigate();
 
+  const style = "d-flex bg-secondary text-light flex-column align-items-start"
+
+
   // Functions and such
   const getFilmById = async (id) => {
     setLoading(true)
@@ -40,13 +43,13 @@ export default function Film() {
   return (
     <>
       {loading && (
-        <p>Loading...</p>
+        <p className="text-light">Loading...</p>
       )}
 
       {film && (
         <>
           <ListGroup>
-            <ListGroup.Item>
+            <ListGroup.Item className={style}>
               <h3>{film.title}</h3>
               <p><span>Episode:</span> {film.episode_id}</p>
               <p><span>Director:</span> {film.director}</p>
@@ -54,11 +57,12 @@ export default function Film() {
               <p><span>Release date:</span>  {film.release_date}</p>
             </ListGroup.Item>
 
-            <ListGroup.Item>
+            <ListGroup.Item className={style}> 
               <p><span>Characters:</span></p>
               {(characters || []).map((char, index) => 
               (
-                <ListGroup.Item
+                <ListGroup.Item 
+                  className={style}
                   action
                   as={Link}
                   to={`/people/${GetIDFromURl(char)}`}
@@ -70,7 +74,6 @@ export default function Film() {
           </ListGroup>
 
           <Button onClick={() => navigate(-1)}>Back</Button>
-
         </>
       )}
     </>

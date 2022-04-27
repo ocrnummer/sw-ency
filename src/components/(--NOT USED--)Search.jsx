@@ -6,7 +6,7 @@ export default function Search() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if (!__.length) {
+        if (!____.length) {
             return
         }
     }

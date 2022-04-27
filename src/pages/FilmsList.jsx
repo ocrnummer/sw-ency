@@ -1,12 +1,6 @@
 // React & Bootstrap
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-// import ListGroup from 'react-bootstrap/ListGroup'
-// import Button from 'react-bootstrap/Button'
-// import Container from 'react-bootstrap/Container'
-// import Row from 'react-bootstrap/Row'
-// import Col from 'react-bootstrap/Col'
-// import Card from 'react-bootstrap'
 import { Button, Container, Row, Col, Card } from 'react-bootstrap'
 
 
@@ -17,7 +11,7 @@ import GetIDFromURl from '../services/helpers/GetIDFromURL'
 
 export default function FilmsList() {
   // Declarations
-  const [films, setFilms] = useState([])
+  const [films, setFilms] = useState('')
   const [loading, setLoading] = useState(false)
 
   // Functions and such
@@ -25,8 +19,8 @@ export default function FilmsList() {
     setLoading(true)
 
     const data = await SWAPI.getAllFilms()
-    setFilms(data.results)
 
+    setFilms(data.results)
     setLoading(false)
   }
 

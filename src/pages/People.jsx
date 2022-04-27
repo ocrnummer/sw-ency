@@ -1,8 +1,7 @@
 // React & Bootstrap
 import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import ListGroup from 'react-bootstrap/ListGroup'
-import Button from 'react-bootstrap/Button'
+import { ListGroup, Button } from 'react-bootstrap'
 
 
 // Imports
@@ -15,10 +14,10 @@ export default function People() {
   const [person, setPerson] = useState([])
   const [loading, setLoading] = useState(false)
 
-  const { films } = person;
+  const { films } = person
 
   const { id } = useParams()
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
 
   // Functions and such
@@ -38,7 +37,7 @@ export default function People() {
   return (
     <>
       {loading && (
-        <p>Loading...</p>
+        <p className="text-light">Loading...</p>
       )}
 
       {person && (
@@ -46,8 +45,8 @@ export default function People() {
           <ListGroup>
             <h3>{person.name}</h3>
             <p><span>Gender:</span> {person.gender}</p>
-            <p><span>Height:</span> {person.height}</p>
-            <p><span>mass:</span> {person.mass}</p>
+            <p><span>Height:</span> {person.height} cm</p>
+            <p><span>mass:</span> {person.mass} kg</p>
             <p><span>Hair color:</span> {person.hair_color}</p>
             <p><span>Skin color:</span> {person.skin_color}</p>
             <p><span>Eye color:</span> {person.eye_color}</p>
