@@ -40,7 +40,7 @@ export default function People() {
   return (
     <>
       {loading && (
-        <p className="text-light">Loading...</p>
+        <h2 className="text-primary m-3">Loading...</h2>
       )}
 
       {person && (
@@ -58,7 +58,7 @@ export default function People() {
           </ListGroup>
 
           <ListGroup.Item className={style}>
-            <p><span className="category">Featured in film:</span></p>
+            <p><span className="bold">Featured in film:</span></p>
               {(films || []).map((film, index) => 
                 (
                   <ListGroup.Item

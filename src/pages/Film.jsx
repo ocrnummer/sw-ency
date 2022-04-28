@@ -43,7 +43,7 @@ export default function Film() {
   return (
     <>
       {loading && (
-        <p className="text-light">Loading...</p>
+        <h2 className="text-primary m-3">Loading...</h2>
       )}
 
       {film && (
@@ -58,7 +58,7 @@ export default function Film() {
             </ListGroup.Item>
 
             <ListGroup.Item className={style}> 
-              <p><span className="category">Characters:</span></p>
+              <p><span className="bold">Characters:</span></p>
               {(characters || []).map((char, index) => 
                 (
                   <ListGroup.Item 
