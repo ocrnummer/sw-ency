@@ -18,7 +18,7 @@ import './App.css';
 function App() {
 
   return (
-    <div id="App" className="App bg-dark">
+    <div id="App" className="App gradient">
 
         <Navigation />
 
