@@ -37,7 +37,7 @@ export default function FilmsList() {
 
       {films && (
         <>
-          <h2>Films</h2>
+          <h2 className="m-3 text-primary">Films</h2>
 
           <Container fluid="md">
             <Row xs={1} s={2} md={3} >

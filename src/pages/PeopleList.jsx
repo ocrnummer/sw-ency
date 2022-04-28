@@ -37,7 +37,7 @@ export default function FilmsList() {
 
       {people && (
         <>
-          <h2>Characters</h2>
+          <h2 className="m-3 text-primary">Characters</h2>
 
 
           <Container fluid="md">

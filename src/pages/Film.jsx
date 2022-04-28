@@ -43,7 +43,7 @@ export default function Film() {
   return (
     <>
       {loading && (
-        <h2 className="text-primary m-3">Loading...</h2>
+        <h2 className="m-3 text-primary">Loading...</h2>
       )}
 
       {film && (
