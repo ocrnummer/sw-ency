@@ -19,6 +19,9 @@ export default function People() {
   const { id } = useParams()
   const navigate = useNavigate()
 
+  const style = "col-md-6 mx-auto d-flex flex-column align-items-start bg-secondary text-light" 
+
+
 
   // Functions and such
   const getPersonById = async (id) => {
@@ -43,20 +46,23 @@ export default function People() {
       {person && (
         <>
           <ListGroup>
-            <h3>{person.name}</h3>
-            <p><span>Gender:</span> {person.gender}</p>
-            <p><span>Height:</span> {person.height} cm</p>
-            <p><span>mass:</span> {person.mass} kg</p>
-            <p><span>Hair color:</span> {person.hair_color}</p>
-            <p><span>Skin color:</span> {person.skin_color}</p>
-            <p><span>Eye color:</span> {person.eye_color}</p>
+            <ListGroup.Item className={style}>
+              <h3 className="text-warning bold">{person.name}</h3>
+              <p><span className="bold">Gender:</span> {person.gender}</p>
+              <p><span className="bold">Height:</span> {person.height} cm</p>
+              <p><span className="bold">mass:</span> {person.mass} kg</p>
+              <p><span className="bold">Hair color:</span> {person.hair_color}</p>
+              <p><span className="bold">Skin color:</span> {person.skin_color}</p>
+              <p><span className="bold">Eye color:</span> {person.eye_color}</p>
+            </ListGroup.Item>
           </ListGroup>
 
-          <ListGroup.Item>
-            <p><span>Featured in film:</span></p>
+          <ListGroup.Item className={style}>
+            <p><span className="category">Featured in film:</span></p>
               {(films || []).map((film, index) => 
                 (
                   <ListGroup.Item
+                    className={style}
                     action
                     as={Link}
                     to={`/films/${GetIDFromURl(film)}`}
@@ -66,7 +72,10 @@ export default function People() {
               )}
           </ListGroup.Item>
 
-          <Button onClick={() => navigate(-1)}>Back</Button>
+          <Button 
+            className="col-md-6 mx-auto m-3"
+            onClick={() => navigate(-1)}
+          >Back</Button>
         </>
       )}
     </>

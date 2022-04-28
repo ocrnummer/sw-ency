@@ -32,7 +32,7 @@ export default function FilmsList() {
   return (
     <>
       {loading && (
-        <h2>Loading...</h2>
+        <h2 className="m-3 text-primary">Loading...</h2>
       )}
 
       {films && (
@@ -43,12 +43,12 @@ export default function FilmsList() {
             <Row xs={1} s={2} md={3} >
               {films.map((film, index) => 
                 <Col key={index}>
-                  <Card className="filmslist m-3">
-                    <Card.Header><h3>{film.title}</h3></Card.Header>
+                  <Card className="m-3 bg-secondary text-light">
+                    <Card.Header><h3 className="text-warning bold">{film.title}</h3></Card.Header>
                     <Card.Body>
-                      <Card.Text>Episode: {film.episode_id}</Card.Text>
-                      <Card.Text>Relase date: {film.release_date}</Card.Text>
-                      <Card.Text>Characters: {film.characters.length}</Card.Text>
+                      <Card.Text><span className="bold">Episode:</span> {film.episode_id}</Card.Text>
+                      <Card.Text><span className="bold">Relase date:</span> {film.release_date}</Card.Text>
+                      <Card.Text><span className="bold">Characters:</span> {film.characters.length}</Card.Text>
                     </Card.Body>
                     <Button                         
                       as={Link} 

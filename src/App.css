@@ -4,4 +4,13 @@
 
 html, body, #root, #App {
 	min-height: 100vh;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.bold {
+  font-weight: bold;
+}
+
+/* .theme {
+
+} */

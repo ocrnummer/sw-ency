@@ -21,7 +21,7 @@ export default function Film() {
   const { id } = useParams()
   const navigate = useNavigate();
 
-  const style = "d-flex bg-secondary text-light flex-column align-items-start"
+  const style = "col-md-6 mx-auto d-flex flex-column align-items-start bg-secondary text-light" 
 
 
   // Functions and such
@@ -50,30 +50,33 @@ export default function Film() {
         <>
           <ListGroup>
             <ListGroup.Item className={style}>
-              <h3>{film.title}</h3>
-              <p><span>Episode:</span> {film.episode_id}</p>
-              <p><span>Director:</span> {film.director}</p>
-              <p><span>Producer:</span> {film.producer}</p>
-              <p><span>Release date:</span>  {film.release_date}</p>
+              <h3 className="text-warning bold">{film.title}</h3>
+              <p><span className="bold">Episode:</span> {film.episode_id}</p>
+              <p><span className="bold">Director:</span> {film.director}</p>
+              <p><span className="bold">Producer:</span> {film.producer}</p>
+              <p><span className="bold">Release date:</span>  {film.release_date}</p>
             </ListGroup.Item>
 
             <ListGroup.Item className={style}> 
-              <p><span>Characters:</span></p>
+              <p><span className="category">Characters:</span></p>
               {(characters || []).map((char, index) => 
-              (
-                <ListGroup.Item 
-                  className={style}
-                  action
-                  as={Link}
-                  to={`/people/${GetIDFromURl(char)}`}
-                  key={GetIDFromURl(char)}
-                >Character {index+1}</ListGroup.Item>
-              )
+                (
+                  <ListGroup.Item 
+                    className={style}
+                    action
+                    as={Link}
+                    to={`/people/${GetIDFromURl(char)}`}
+                    key={GetIDFromURl(char)}
+                  >Character {index+1}</ListGroup.Item>
+                )
               )}
             </ListGroup.Item>
           </ListGroup>
 
-          <Button onClick={() => navigate(-1)}>Back</Button>
+          <Button 
+            className="col-md-6 mx-auto m-3"
+            onClick={() => navigate(-1)}
+          >Back</Button>
         </>
       )}
     </>
